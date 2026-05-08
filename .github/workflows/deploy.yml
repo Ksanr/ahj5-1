@@ -15,10 +15,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn'
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Enable Corepack and prepare Yarn
+        run: |
+          corepack enable
+          YARN_VERSION=$(node -p "require('./package.json').packageManager.split('@')[1]")
+          corepack prepare yarn@${YARN_VERSION} --activate
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
