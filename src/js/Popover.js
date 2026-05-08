@@ -37,8 +37,7 @@ export default class Popover {
       this.popoverElement = this._createPopoverElement();
     }
 
-    // Вставляем в body (или рядом с элементом)
-    document.body.appendChild(this.popoverElement);
+    document.body.append(this.popoverElement);
     this._positionPopover();
     this.isVisible = true;
 
@@ -49,8 +48,8 @@ export default class Popover {
   hide() {
     if (!this.isVisible) return;
 
-    if (this.popoverElement && this.popoverElement.parentNode) {
-      this.popoverElement.parentNode.removeChild(this.popoverElement);
+    if (this.popoverElement) {
+      this.popoverElement.remove();
     }
     this.isVisible = false;
 
@@ -63,17 +62,17 @@ export default class Popover {
 
     const arrow = document.createElement('div');
     arrow.classList.add('popover-arrow');
-    wrapper.appendChild(arrow);
+    wrapper.append(arrow);
 
     const header = document.createElement('h3');
     header.classList.add('popover-header');
     header.textContent = this.title;
-    wrapper.appendChild(header);
+    wrapper.append(header);
 
     const body = document.createElement('div');
     body.classList.add('popover-body');
     body.textContent = this.content;
-    wrapper.appendChild(body);
+    wrapper.append(body);
 
     return wrapper;
   }
@@ -84,11 +83,10 @@ export default class Popover {
     const triggerRect = this.element.getBoundingClientRect();
     const popoverRect = this.popoverElement.getBoundingClientRect();
 
-    // Показываем сверху, центрируем по горизонтали
+    // Всегда показываем сверху
     const top = triggerRect.top - popoverRect.height - ARROW_HEIGHT - OFFSET;
     let left = triggerRect.left + triggerRect.width / 2 - popoverRect.width / 2;
 
-    // Простейшая корректировка, чтобы не уходило за экран
     const { innerWidth } = window;
     if (left < 0) left = 0;
     if (left + popoverRect.width > innerWidth) left = innerWidth - popoverRect.width;
