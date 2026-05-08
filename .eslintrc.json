@@ -1,0 +1,36 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-param-reassign": "off",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "max-len": ["error", { "code": 120, "ignoreComments": true }]
+  },
+  "overrides": [
+    {
+      "files": ["webpack.config.js"],
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+      }
+    },
+    {
+      "files": ["test/**/*.js"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}
