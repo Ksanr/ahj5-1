@@ -1,9 +1,9 @@
 # Popovers (Домашнее задание к занятию "Работа с HTML-формами")
 
-[![Build Status](https://github.com/ksandr/ahj5-1/actions/workflows/deploy.yml/badge.svg)](https://github.com/ksandr/ahj5-1/actions)
+[![Build Status](https://github.com/ksanr/ahj5-1/actions/workflows/deploy.yml/badge.svg)](https://github.com/ksanr/ahj5-1/actions/workflows/deploy.yml)
 
 ## Ссылка на GitHub Pages
-[Посмотреть демо](https://ksandr.github.io/ahj5-1/)
+[Посмотреть демо](https://ksanr.github.io/ahj5-1/)
 
 ## Описание
 Реализация виджета Popover на чистом JavaScript (без jQuery).  
