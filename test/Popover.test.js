@@ -61,7 +61,7 @@ describe('Popover', () => {
   test('должен скрывать поповер при клике на другой произвольный элемент', () => {
     trigger.click();
     const outside = document.createElement('div');
-    document.body.appendChild(outside);
+    document.body.append(outside);
     outside.click();
     expect(document.querySelector('.popover')).toBeNull();
     outside.remove();
